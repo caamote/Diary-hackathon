@@ -48,8 +48,8 @@ class Snack {
         return new Snack(response.rows[0]);
     }
 
-    static async destroy() {
-        const response = await db.query('DESTROY FROM snack WHERE snack_id = $1 RETURNING *;', [this.id]);
+    async destroy() {
+        const response = await db.query("DELETE FROM snack WHERE snack_id = $1 RETURNING *;", [this.id]);
 
         return new Snack(response.rows[0]);
     }
