@@ -33,7 +33,7 @@ class Snack {
     }
 
     static async create(data) {
-        const{snack_name, snack_description, healthy, vegetarian} = data;
+        const{snack_name, snack_description, healthy, vegetarian} = data;        
         const response = await db.query("INSERT INTO snack (snack_name, snack_description, healthy, vegetarian) VALUES ($1, $2, $3, $4) RETURNING *;", [snack_name, snack_description, healthy, vegetarian]);
 
         return response.rows.map(w => new Snack(w))

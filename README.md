@@ -28,3 +28,9 @@ To run the server navigate to api folder and run following command:
 ## Deployment server
 To run the server navigate to api folder and run following command:
 `npm run start`
+
+
+
+Functions that still do not work:
+
+- Create function - when healthy or vegetarian are not entered, the function automatically gives them value of `null` instead of `false` as  shoud be according to the setup table
