@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS snack;
 
-CREATE snack (
+CREATE TABLE snack (
     snack_id INT GENERATED ALWAYS AS IDENTITY,
     snack_name VARCHAR(30) UNIQUE NOT NULL,
     snack_description VARCHAR(500),

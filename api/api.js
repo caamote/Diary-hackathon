@@ -14,5 +14,6 @@ api.get("/", (req, res) => {
         description: "Find and rate the best snacks ever!"
     })
 })
+api.use("/snacks", snackRouter);
 
 module.exports = api;
