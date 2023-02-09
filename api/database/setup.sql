@@ -10,7 +10,7 @@ CREATE snack (
 );
 
 INSERT INTO snack
-    (snack_name, snack_description, healthy, votes)
+    (snack_name, snack_description, healthy, vegetarian, votes)
 VALUES
     ('Peanuts', 'Roasted & salted peanuts', TRUE, TRUE, 0),
     ('Red velvet cake', 'Cake for cowards', FALSE, FALSE, 0),
