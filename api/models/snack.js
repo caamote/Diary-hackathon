@@ -40,7 +40,7 @@ class Snack {
     }
 
     async update(data) {
-        const response = await db.query("PATCH snack SET votes = $1 RETURNING snack_id, votes;",
+        const response = await db.query("UPDATE snack SET votes = $1 WHERE snack_id = $2 RETURNING snack_id, votes;",
             [ this.votes + data.votes, this.id ]);
         if (response.rows.length != 1) {
             throw new Error("Unable to update votes.")
