@@ -59,4 +59,5 @@ static async getAllByCategory(category) {
     }
 }
 
-module.exports = Post;
+module.exports = Post
+    
