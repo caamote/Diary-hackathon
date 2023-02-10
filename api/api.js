@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 
-const snackRouter = require('./routers/snack');
+const postRouter = require('./routers/post');
 
 const api = express();
 
@@ -10,10 +10,10 @@ api.use(express.json());
 
 api.get("/", (req, res) => {
     res.json({
-        title: "Snack Rankings",
-        description: "Find and rate the best snacks ever!"
+        title: " My Diary",
+        description: "Post and read your old entries to this diary"
     })
 })
-api.use("/snacks", snackRouter);
+api.use("/posts", postRouter);
 
 module.exports = api;

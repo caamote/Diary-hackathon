@@ -2,12 +2,9 @@ DROP TABLE IF EXISTS diary;
 
 CREATE TABLE diary (
     post_id INT GENERATED ALWAYS AS IDENTITY,
-    post_category VARCHAR(30) UNIQUE NOT NULL,
-    post_text VARCHAR(500),
-    post_date DATE GENERATED,
-    post_time TIME GENERATED
-    
-);
+    post_category VARCHAR(30) NOT NULL,
+    post_text VARCHAR(500) NOT NULL,
+    post_time TIMESTAMP DEFAULT NOW());
 
 INSERT INTO diary
     (post_category, post_text)
