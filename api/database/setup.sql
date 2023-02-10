@@ -4,8 +4,8 @@ CREATE TABLE snack (
     snack_id INT GENERATED ALWAYS AS IDENTITY,
     snack_name VARCHAR(30) UNIQUE NOT NULL,
     snack_description VARCHAR(500),
-    healthy BOOLEAN DEFAULT FALSE,
-    vegetarian BOOLEAN DEFAULT FALSE,
+    healthy BOOLEAN DEFAULT ON NULL FALSE,
+    vegetarian BOOLEAN DEFAULT ON NULL FALSE,
     votes INT DEFAULT 0
 );
 

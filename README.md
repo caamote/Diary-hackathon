@@ -1,36 +1,42 @@
-# Debug assignment 2
 
-Instructions on how to complete the assignment can be found [here](./instructions/README.md).
-# Architecture
+BACK END
 
-*Snack Rankings* is a back-end project that allows users to view and vote on their favourite snacks.
+# Create
+ - text - user entry
+ - category - user entry
+  - date and time - filled in automatically
+  - id - filled in automatically
 
-This project has two key elements:
+## See
+ - all entries sorted by date desceding
+  - by id
+  - by date
+  - by category
 
-- An API that allows users to vote on snacks and see a list of snacks with their total votes
-- A database storing the snack data
+### Update
+ - diary entry
 
-## Installation
-Navigate to api folder and run following commands:
-`npm install -D` to get all required libraries
-`npm run setup-db` - to create databes tables
-
-## Environment
-This app requires `.env` to run locally. It needs the following info:
-```bash
-PORT=xxxx
-```
-
-## Development server
-To run the server navigate to api folder and run following command:
-`npm run dev`
-
-## Deployment server
-To run the server navigate to api folder and run following command:
-`npm run start`
+#### Delete
+- entry
 
 
 
-Functions that still do not work:
+FRONT END
 
-- Create function - when healthy or vegetarian are not entered, the function automatically gives them value of `null` instead of `false` as  shoud be according to the setup table
+
+# Index.html - landing page
+
+    - Create post
+        - form to create an entry
+        - submit button
+        - delete button next to each post
+        - update button
+
+    - Search for a post form
+        - show all
+        - category
+        - date/month/yaer
+        - category
+
+- 
+
