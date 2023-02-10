@@ -1,9 +1,9 @@
-const Snack = require("../models/snack.js");
+const Post = require("../models/post.js");
 
 async function index(req, res) {
     try {
-        const snacks = await Snack.getAll();
-        res.status(200).json(snacks);
+        const posts = await Post.getAll();
+        res.status(200).json(posts);
     } catch (err) {
         res.status(500).json({ "error": err.message })
     }
@@ -12,18 +12,18 @@ async function index(req, res) {
 async function show(req, res) {
     try {
         const id = parseInt(req.params.id);
-        const snack = await Snack.getOneById(id);
-        res.status(200).json(snack);
+        const post = await Post.getOneById(id);
+        res.status(200).json(post);
     } catch (err) {
         res.status(404).json({ "error": err.message })
     }
 }
 
-async function getTop(req, res) {
+async function category(req, res) {
     try {
-        const id = parseInt(req.params.id);
-        const snack = await Snack.getTopSnack(id);
-        res.status(200).json(snack);
+        const cat = parseInt(req.params.category);
+        const posts = await Post.getAllByCategory(cat);
+        res.status(200).json(posts);
     } catch (err) {
         res.status(404).json({ "error": err.message })
     }
@@ -32,13 +32,13 @@ async function getTop(req, res) {
 async function create(req, res) {
     try {
         const data = req.body;
-        const checkValues = ["snack_name"].every(p => Object.hasOwn(data, p))
+        const checkValues = ["post_category", "post_text"].every(p => Object.hasOwn(data, p))
         if (checkValues) {
-            const snack = await Snack.create(data);
-            res.status(201).send(snack);
+            const post = await Post.create(data);
+            res.status(201).send(post);
         } else {
             res.status(404).json({
-                error: "Snack name must be entered"
+                error: "Post category and text must be entered"
             })
         }
     } catch (err) {
@@ -49,9 +49,9 @@ async function create(req, res) {
 async function update(req, res) {
     try {
         const id = parseInt(req.params.id);
-        const snack = await Snack.getOneById(id);
+        const post = await Post.getOneById(id);
         const data = req.body;
-        const result = await snack.update(data);
+        const result = await post.update(data);
         res.status(200).json(result);
     } catch (err) {
         res.status(404).json({ "error": err.message })
@@ -61,8 +61,8 @@ async function update(req, res) {
 async function destroy(req, res) {
     try {
         const id = parseInt(req.params.id);
-        const snack = await Snack.getOneById(id);
-        const result = await snack.destroy();
+        const post = await Post.getOneById(id);
+        const result = await post.destroy();
         res.status(204).end();
     } catch (err) {
         res.status(404).json({ "error": err.message })
@@ -70,5 +70,5 @@ async function destroy(req, res) {
 }
 
 module.exports = {
-    index, show, getTop, create, update, destroy
+    index, show, category, create, update, destroy
 }
