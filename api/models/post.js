@@ -14,22 +14,24 @@ class Post {
         const response = await db.query("SELECT * FROM diary ORDER BY post_id;");
         return response.rows.map(g => new Post(g));
     }
-
-    static async category() {
-        const response = await db.query("SELECT * FROM diary WHERE post_category = $1;", [post_category]);
+    
+    static async getOneById(id) {
+        const response = await db.query("SELECT * FROM diary WHERE post_id = $1;", [id]);
         if (response.rows.length != 1) {
             throw new Error("Unable to locate post.")
         }
         return new Post(response.rows[0]);
     }
 
-    static async getOneById(id) {
-        const response = await db.query("SELECT * FROM diary WHERE post-id = $1;", [id]);
+    static async getAllByCategory(category) {
+        const response = await db.query("SELECT * FROM diary WHERE post_category = $1;", [category]);
         if (response.rows.length != 1) {
             throw new Error("Unable to locate post.")
         }
-        return new Snack(response.rows[0]);
+        return new Post(response.rows[0]);
     }
+
+    
 
     static async create(data) {
         let { post_id, post_category, post_text, post_time } = data; 
@@ -38,7 +40,7 @@ class Post {
         // if(vegetarian === undefined){ vegetarian = "false"}
         const response = await db.query("INSERT INTO diary (post_id, post_category, post_text, post_time) VALUES ($1, $2, $3, $4) RETURNING *;", [post_id, post_category, post_text, post_time]);
 
-        return response.rows.map(p => new Snack(p))
+        return response.rows.map(p => new Post(p))
     }
 
     // async update(data) {
