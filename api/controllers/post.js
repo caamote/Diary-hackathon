@@ -46,17 +46,17 @@ async function create(req, res) {
     }
 }
 
-async function update(req, res) {
-    try {
-        const id = parseInt(req.params.id);
-        const post = await Post.getOneById(id);
-        const data = req.body;
-        const result = await post.update(data);
-        res.status(200).json(result);
-    } catch (err) {
-        res.status(404).json({ "error": err.message })
-    }
-}
+// async function update(req, res) {
+//     try {
+//         const id = parseInt(req.params.id);
+//         const post = await Post.getOneById(id);
+//         const data = req.body;
+//         const result = await post.update(data);
+//         res.status(200).json(result);
+//     } catch (err) {
+//         res.status(404).json({ "error": err.message })
+//     }
+// }
 
 async function destroy(req, res) {
     try {
@@ -70,5 +70,5 @@ async function destroy(req, res) {
 }
 
 module.exports = {
-    index, show, category, create, update, destroy
+    index, show, category, create, destroy
 }
