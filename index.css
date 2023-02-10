@@ -1,0 +1,23 @@
+h1 {
+    text-align: center;
+}
+
+
+    form {
+        display: flex;
+       
+        justify-content: center;
+        top: 200px;
+        flex-flow: column;
+        margin-bottom: 10px;
+        align-content: flex-end;
+        align-items: center;
+    }
+    
+    
+
+
+#sets {
+    width: 200px;
+    height:200px;
+}
