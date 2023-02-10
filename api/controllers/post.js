@@ -21,7 +21,8 @@ async function show(req, res) {
 
 async function category(req, res) {
     try {
-        const cat = parseInt(req.params.category);
+        const cat = (req.params.category);
+        
         const posts = await Post.getAllByCategory(cat);
         res.status(200).json(posts);
     } catch (err) {
