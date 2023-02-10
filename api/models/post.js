@@ -1,5 +1,5 @@
 let db = require("../database/connect");
-const { post } = require("../routers/post");
+
 
 class Post {
 
@@ -11,24 +11,26 @@ class Post {
     }
 
     static async getAll() {
-        const response = await db.query("SELECT * FROM diary ORDER BY post_id;");
+        const response = await db.query("SELECT * FROM diary ORDER BY post_time;");
         return response.rows.map(g => new Post(g));
     }
 
-    static async category() {
-        const response = await db.query("SELECT * FROM diary WHERE post_category = $1;", [post_category]);
-        if (response.rows.length != 1) {
-            throw new Error("Unable to locate post.")
-        }
-        return new Post(response.rows[0]);
-    }
+   
 
     static async getOneById(id) {
-        const response = await db.query("SELECT * FROM diary WHERE post-id = $1;", [id]);
+        const response = await db.query("SELECT * FROM diary WHERE post_id = $1;", [id]);
         if (response.rows.length != 1) {
             throw new Error("Unable to locate post.")
         }
         return new Snack(response.rows[0]);
+    }
+
+    static async category(category) {
+        const response = await db.query("SELECT * FROM diary WHERE post_category = $1;", [category]);
+        if (response.rows.length != 1) {
+            throw new Error("Unable to locate post.")
+        }
+        return new Post(response.rows[0]);
     }
 
     static async create(data) {
