@@ -1,27 +1,23 @@
-DROP TABLE IF EXISTS snack;
+DROP TABLE IF EXISTS diary;
 
-CREATE TABLE snack (
-    snack_id INT GENERATED ALWAYS AS IDENTITY,
-    snack_name VARCHAR(30) UNIQUE NOT NULL,
-    snack_description VARCHAR(500),
-    healthy BOOLEAN DEFAULT ON NULL FALSE,
-    vegetarian BOOLEAN DEFAULT ON NULL FALSE,
-    votes INT DEFAULT 0
+CREATE TABLE diary (
+    post_id INT GENERATED ALWAYS AS IDENTITY,
+    post_category VARCHAR(30) UNIQUE NOT NULL,
+    post_text VARCHAR(500),
+    post_date DATE GENERATED,
+    post_time TIME GENERATED
+    
 );
 
-INSERT INTO snack
-    (snack_name, snack_description, healthy, vegetarian, votes)
+INSERT INTO diary
+    (post_category, post_text)
 VALUES
-    ('Peanuts', 'Roasted & salted peanuts', TRUE, TRUE, 0),
-    ('Red velvet cake', 'Cake for cowards', FALSE, FALSE, 0),
-    ('Chocolate cake', 'Rich and delicious', FALSE, FALSE, 0),
-    ('Skittles', 'Multicolored button-shaped candies', FALSE, TRUE, 0),
-    ('Marshmallow', 'The least scary thing anyone could ever think of', FALSE, TRUE, 0),
-    ('Grapes', 'Decadent if peeled', TRUE, TRUE, 0),
-    ('Oreo milkshake', 'Refreshingly gritty', FALSE, TRUE, 0),
-    ('Banana milkshake', 'May contain real bananas', FALSE, TRUE, 0),
-    ('Mango', 'Grows on trees', TRUE, TRUE, 0),
-    ('Victoria sponge', 'Basic', FALSE, FALSE, 0),
-    ('M&Ms', 'Multicolored button-shaped candies', FALSE, TRUE, 0),
-    ('Smarties', 'Multicolored button-shaped candies', FALSE, TRUE, 0),
-    ('Jammy dodgers', 'An eternal disappointment', FALSE, TRUE, 0)
+    ('Sport', 'I went for a run'),
+    ('Hobby', 'I cooked something'),
+    ('Relax', 'I watched some movie'),
+    ('Work', 'I worked hard today'),
+    ('Sport', 'I went to the gym'),
+    ('Hobby', 'I played with my dog'),
+    ('Relax', 'I read a book'),
+    ('Work', 'I did a training')
+   
